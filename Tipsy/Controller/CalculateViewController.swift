@@ -25,9 +25,31 @@ class CalculateViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         billAmountTextField.delegate = self
+        updateUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        updateUI()
+    }
+    
+    func updateUI() -> Void {
+        // Retrieve dada
+        let defaults = UserDefaults.standard
+        var fVal = defaults.double(forKey: "fVal")
+        var sVal = defaults.double(forKey: "sVal")
+        var tVal = defaults.double(forKey: "tVal")
+        
+        //Assign data
+        tipPercentages = [Double(fVal) / 100, Double(sVal) / 100, Double(tVal) / 100]
+        
+        //Update labels
+        tipControl.setTitle("\(fVal)%", forSegmentAt: 0)
+        tipControl.setTitle("\(sVal)%", forSegmentAt: 1)
+        tipControl.setTitle("\(tVal)%", forSegmentAt: 2)
+        
         splitLabel.text = String(numberOfPeople)
         tipStepper.minimumValue = Double(numberOfPeople)
-        
     }
     @IBAction func splitStepperPressed(_ sender: UIStepper) {
         //Update Choose Split value

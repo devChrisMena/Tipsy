@@ -22,7 +22,4 @@ class ResultViewController: UIViewController {
         splitAmountLabel.text = "$\(result)"
         totalAmountLabel.text = "Split between \(numberOfPeople), with \(tip * 100)% tip. Total is $\(totalResult)"
     }
-    @IBAction func recalculatePressed(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
-    }
 }

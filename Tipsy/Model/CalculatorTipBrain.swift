@@ -19,7 +19,7 @@ struct CalculateTipBrain {
     }
     
     func getSplitAmount() -> Double {
-        let result = (billTotal * tip) / Double(numberOfPeople)
+        let result = ((billTotal * tip) + billTotal) / Double(numberOfPeople)
         return result
     }
     
@@ -35,7 +35,7 @@ struct CalculateTipBrain {
     }
     
     func getSplitAmountText() -> String {
-        let result = (billTotal * tip) / Double(numberOfPeople)
+        let result = ((billTotal * tip) + billTotal) / Double(numberOfPeople)
         let text = String(format: "%.2f", result)
         return text
     }
