@@ -20,11 +20,13 @@ class CalculateViewController: UIViewController, UITextFieldDelegate {
     var tip = 0.0
     var totalResult = ""
     var splitResult = ""
+    var tipAmount = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         billAmountTextField.delegate = self
+        tipStepper.minimumValue = Double(numberOfPeople)
         updateUI()
     }
     
@@ -49,7 +51,6 @@ class CalculateViewController: UIViewController, UITextFieldDelegate {
         tipControl.setTitle("\(tVal)%", forSegmentAt: 2)
         
         splitLabel.text = String(numberOfPeople)
-        tipStepper.minimumValue = Double(numberOfPeople)
     }
     @IBAction func splitStepperPressed(_ sender: UIStepper) {
         //Update Choose Split value
@@ -63,6 +64,7 @@ class CalculateViewController: UIViewController, UITextFieldDelegate {
         tippingBrain = CalculateTipBrain(tip: tip, numberOfPeople: numberOfPeople, billTotal: bill)
         splitResult = tippingBrain?.getSplitAmountText() ?? ""
         totalResult = tippingBrain?.getTotalBillWithTipText() ?? ""
+        tipAmount = tippingBrain?.getTipAmountText() ?? ""
         self.performSegue(withIdentifier: "goToResult", sender: self)
     
     }
@@ -74,6 +76,7 @@ class CalculateViewController: UIViewController, UITextFieldDelegate {
             secondVC.tip = tip
             secondVC.totalResult = totalResult
             secondVC.result = splitResult
+            secondVC.tipAmount = tipAmount
         }
     }
 }

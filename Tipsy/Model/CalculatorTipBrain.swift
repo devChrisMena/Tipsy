@@ -39,4 +39,9 @@ struct CalculateTipBrain {
         let text = String(format: "%.2f", result)
         return text
     }
+    
+    func getTipAmountText() -> String {
+        let result = String(format: "%.2f", billTotal * tip)
+        return result
+    }
 }

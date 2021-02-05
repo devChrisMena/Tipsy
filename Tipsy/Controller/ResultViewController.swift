@@ -16,10 +16,10 @@ class ResultViewController: UIViewController {
     var tip = 0.15
     var result  = ""
     var numberOfPeople  = 2
-    
+    var tipAmount = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         splitAmountLabel.text = "$\(result)"
-        totalAmountLabel.text = "Split between \(numberOfPeople), with \(tip * 100)% tip. Total is $\(totalResult)"
+        totalAmountLabel.text = "Split between \(numberOfPeople), with \(tip * 100)% tip is $\(tipAmount), total is $\(totalResult)"
     }
 }
